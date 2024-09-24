@@ -49,5 +49,9 @@ describe('Contact Us', () => {
 
         //Click Home button
         await browser.$(browserScreen.buttons.homeBtn).click();
+
+        //Verify user is at Homepage
+        await expect(browser.$(browserScreen.texts.featuredItems)).toBeDisplayed();
+        await expect(browser.$(browserScreen.texts.featuredItems)).toHaveText("FEATURES ITEMS");
     })
 })
