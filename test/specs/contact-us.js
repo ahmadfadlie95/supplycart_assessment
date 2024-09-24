@@ -12,7 +12,7 @@ describe('Contact Us', () => {
         await browser.maximizeWindow();
 
         //Navigate to the page
-        await browser.url("https://automationexercise.com/");
+        await browser.url("https://automationexercise.com");
 
         //Verify user is at Homepage
         await expect(browser.$(browserScreen.texts.featuredItems)).toBeDisplayed();

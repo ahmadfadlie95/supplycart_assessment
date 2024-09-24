@@ -13,8 +13,6 @@ jobs:
           run: npm install
         - name: Test 
           env: 
-            # BROWSERSTACK_USERNAME: ${{secrets.BS_USER}}
-            # BROWSERSTACK_ACCESS_KEY: ${{secrets.BS_KEY}}
             user: 'ahmadfadliehadib_AzGhEB',
             key: '6FzybP8va7qjbxxNV68m',
           run: npx wdio wdio.conf.js --spec test/specs/contact-us.js
