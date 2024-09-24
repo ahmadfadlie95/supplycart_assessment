@@ -9,12 +9,6 @@ jobs:
         - uses: actions/setup-node@v3
           with:
             node-version: 18
-        - name: Debug Environment
-          run: |
-            pwd
-            ls -la
-            node --version
-            npm --version
         - name: Install
           run: |
             npm install
@@ -22,9 +16,7 @@ jobs:
           env: 
             BROWSERSTACK_USERNAME: ${{ secrets.BS_USER }}
             BROWSERSTACK_ACCESS_KEY: ${{ secrets.BS_KEY }}
-          run: |
-            echo "Running WebdriverIO test..."
-            chmod +x npx wdio test/specs/contact-us.js
+          run: chmod +x npx wdio test/specs/contact-us.js
         - uses: actions/upload-artifact@v3
           if: always()
           with:
