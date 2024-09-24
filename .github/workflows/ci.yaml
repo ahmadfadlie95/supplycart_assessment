@@ -18,12 +18,6 @@ jobs:
         - name: Install
           run: |
             npm install
-        - name: Debug After Install
-          run: |
-            ls -la
-            ls -la node_modules/.bin
-            which wdio
-            ls -l $(which wdio)
         - name: Test 
           env: 
             BROWSERSTACK_USERNAME: ${{ secrets.BS_USER }}
