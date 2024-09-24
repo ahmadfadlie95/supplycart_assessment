@@ -32,7 +32,13 @@ jobs:
           run: |
             echo "Running WebdriverIO test..."
             npx wdio --version
-            npx wdio --spec ./test/specs/contact-us.js
+            cat wdio.conf.js
+            DEBUG=true npx wdio --spec ./test/specs/contact-us.js
+        - name: Debug on Failure
+          if: failure()
+          run: |
+            echo "Test failed. Debugging..."
+            cat ./logs/wdio.log
         - uses: actions/upload-artifact@v3
           if: always()
           with:
