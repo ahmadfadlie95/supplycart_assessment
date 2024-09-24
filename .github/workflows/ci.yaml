@@ -15,7 +15,7 @@ jobs:
           env: 
             BROWSERSTACK_USERNAME: ${{secrets.BS_USER}}
             BROWSERSTACK_ACCESS_KEY: ${{secrets.BS_KEY}}
-          run: chmod npx wdio wdio.conf.js --spec test/specs/contact-us.js
+          run: sudo npx wdio wdio.conf.js --spec test/specs/contact-us.js
         - uses: actions/upload-artifact@v3
           if: failure()
           with:
