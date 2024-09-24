@@ -21,3 +21,7 @@ jobs:
           with:
             name: logs
             path: logs
+        - name: Debug
+          run: |
+            ls -la
+            ls -la node_modules/.bin
