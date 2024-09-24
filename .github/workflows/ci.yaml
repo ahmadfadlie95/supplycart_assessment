@@ -16,7 +16,7 @@ jobs:
             user: ${{secrets.BS_USER}}
             key: ${{secrets.BS_KEY}}
           run: npx wdio wdio.conf.js --spec test/specs/contact-us.js
-        - uses: actions/upload-artifact@v1
+        - uses: actions/upload-artifact@v3
           if: failure()
           with:
             name: logs
