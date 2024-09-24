@@ -18,7 +18,6 @@ jobs:
         - name: Install
           run: |
             npm install
-            npm list wdio
         - name: Debug After Install
           run: |
             ls -la
