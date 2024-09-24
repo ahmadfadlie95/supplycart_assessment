@@ -24,7 +24,7 @@ jobs:
             BROWSERSTACK_ACCESS_KEY: ${{ secrets.BS_KEY }}
           run: |
             echo "Running WebdriverIO test..."
-            chmod a+x npx wdio test/specs/contact-us.js
+            chmod +x npx wdio test/specs/contact-us.js
         - uses: actions/upload-artifact@v3
           if: always()
           with:
