@@ -11,11 +11,13 @@ jobs:
             node-version: 18
         - name: Install
           run: npm install
+        - name: Set permissions for WebDriverIO test files
+          run: chmod +x ./test/specs/contact-us.js
         - name: Test 
           env: 
             BROWSERSTACK_USERNAME: ${{secrets.BS_USER}}
             BROWSERSTACK_ACCESS_KEY: ${{secrets.BS_KEY}}
-          run: sudo npx wdio wdio.conf.js --spec test/specs/contact-us.js
+          run: npx wdio run wdio.conf.js
         - uses: actions/upload-artifact@v3
           if: failure()
           with:
