@@ -12,12 +12,12 @@ jobs:
         - name: Install
           run: |
             npm install
+            npm install -g wdio
         - name: Test 
           env: 
             BROWSERSTACK_USERNAME: ${{ secrets.BS_USER }}
             BROWSERSTACK_ACCESS_KEY: ${{ secrets.BS_KEY }}
           run:
-          npm install -g wdio
           chmod +x wdio.conf.js 
           npm run wdio wdio.conf.js --spec test/specs/contact-us.js
         - uses: actions/upload-artifact@v3
