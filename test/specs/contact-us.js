@@ -39,5 +39,15 @@ describe('Contact Us', () => {
 
         //Click Submit button
         await browser.$(browserScreen.buttons.submitFormBtn).click();
+
+        //Accept Alert
+        await browser.acceptAlert();
+
+        //Verify success message
+        await expect(browser.$(browserScreen.texts.successMsg)).toBeDisplayed();
+        await expect(browser.$(browserScreen.texts.successMsg)).toHaveText("Success! Your details have been submitted successfully.");
+
+        //Click Home button
+        await browser.$(browserScreen.buttons.homeBtn).click();
     })
 })
