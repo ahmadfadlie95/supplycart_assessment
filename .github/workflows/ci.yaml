@@ -24,14 +24,7 @@ jobs:
             BROWSERSTACK_ACCESS_KEY: ${{ secrets.BS_KEY }}
           run: |
             echo "Running WebdriverIO test..."
-            npx wdio --version
-            cat wdio.conf.js
-            DEBUG=true npx wdio --spec ./test/specs/contact-us.js
-        - name: Debug on Failure
-          if: failure()
-          run: |
-            echo "Test failed. Debugging..."
-            cat ./logs/wdio.log
+            chmod a+x npx wdio run wdio.conf.js --spec test/specs/contact-us.js
         - uses: actions/upload-artifact@v3
           if: always()
           with:
