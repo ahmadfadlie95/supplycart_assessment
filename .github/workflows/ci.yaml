@@ -1,4 +1,4 @@
-name: CI
+name: CI Debug
 on: [push, pull_request]
 jobs:
   build:
@@ -9,19 +9,32 @@ jobs:
         - uses: actions/setup-node@v3
           with:
             node-version: 18
+        - name: Debug Environment
+          run: |
+            pwd
+            ls -la
+            node --version
+            npm --version
         - name: Install
-          run: npm install
+          run: |
+            npm install
+            npm list wdio
+        - name: Debug After Install
+          run: |
+            ls -la
+            ls -la node_modules/.bin
+            which wdio
+            ls -l $(which wdio)
         - name: Test 
           env: 
             BROWSERSTACK_USERNAME: ${{ secrets.BS_USER }}
             BROWSERSTACK_ACCESS_KEY: ${{ secrets.BS_KEY }}
-          run: npx wdio run wdio.conf.js --spec test\specs\contact-us.js
+          run: |
+            echo "Running WebdriverIO test..."
+            npx wdio --version
+            npx wdio --spec ./test/specs/contact-us.js
         - uses: actions/upload-artifact@v3
-          if: failure()
+          if: always()
           with:
             name: logs
             path: logs
-        - name: Debug
-          run: |
-            ls -la
-            ls -la node_modules/.bin
