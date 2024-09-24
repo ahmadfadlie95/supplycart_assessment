@@ -15,7 +15,7 @@ jobs:
           env: 
             BROWSERSTACK_USERNAME: ${{ secrets.BS_USER }}
             BROWSERSTACK_ACCESS_KEY: ${{ secrets.BS_KEY }}
-          run: node_modules/.bin/wdio --spec test\specs\contact-us.js
+          run: npx wdio run wdio.conf.js --spec test\specs\contact-us.js
         - uses: actions/upload-artifact@v3
           if: failure()
           with:
